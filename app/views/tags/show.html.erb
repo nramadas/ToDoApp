@@ -1,0 +1,8 @@
+<h1 class="new_task"><%= @tag.tag_name %></h1>
+<% @tag.tasks.each do |task| %>
+  <%= link_to edit_task_path(task) do %>
+    <div class="tag_show_task">
+      <%= task.title %>
+    </div>
+  <% end %>
+<% end %>

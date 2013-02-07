@@ -1,0 +1,33 @@
+<h1 class="user_show"><%= @user.name %></h1>
+<% @user.tags.each do |tag| %>
+  <%= link_to tag_path(tag) do %>
+    <div class="tag">
+      <%= tag.tag_name %>
+    </div>
+  <% end %>
+<% end %>
+<div class="clear_floats"></div>
+<%= link_to new_task_path do %>
+  <div class="add_task">
+    Add a task
+  </div>
+<% end %>
+<h2 class="user_show">Things you want to get done:</h2>
+<% if @user.tasks.any? %>
+  <% @user.tasks.each do |task| %>
+    <div class="user_show_task">
+      <h1><%= task.title %></h1>
+      <%= link_to edit_task_path(task) do %>
+        <div class="user_show_edit_task">edit</div>
+      <% end %>
+      <p><%= task.body %></p>
+      <%= link_to task_path(task), method: :delete do %>
+        <div class="user_show_delete_task">Completed!</div>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <div class="user_show_task">
+    No upcoming tasks
+  </div>
+<% end %>

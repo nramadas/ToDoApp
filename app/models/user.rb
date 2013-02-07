@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
 
-  attr_accessible :email, :name, :password, :password_confirmation
+  attr_accessible :email, :name, :password, :password_confirmation, :session_token
 
   validates_presence_of   :name, message: "cannot be blank"
   validates_length_of     :name, in: 1..30,
@@ -20,5 +20,6 @@ class User < ActiveRecord::Base
   validates_presence_of   :password_confirmation, message: "cannot be blank"
 
   has_many :tasks
+  has_many :tags, through: :tasks
 
 end

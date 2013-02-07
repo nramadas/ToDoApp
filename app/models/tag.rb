@@ -4,8 +4,13 @@ class Tag < ActiveRecord::Base
   validates_presence_of   :tag_name, message: "must be provided"
   validates_uniqueness_of :tag_name, case_sensitive: false,
                            message: "already exists"
-  validates_presence_of   :task_id, message: "must be provided"
 
-  has_many :tag_tasks
+  has_many :tag_tasks, dependent: :destroy
   has_many :tasks, through: :tag_tasks
+
+  has_many :users, through: :tasks
+
+  def self.make_tag(value)
+    Tag.where(tag_name: value).first || Tag.create(tag_name: value)
+  end
 end
