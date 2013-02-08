@@ -1,10 +1,8 @@
 class TasksController < ApplicationController
   def new
+    redirect_to root_path unless current_user
+
     @task = Task.new
-  end
-
-  def show
-
   end
 
   def create
@@ -20,6 +18,8 @@ class TasksController < ApplicationController
   end
 
   def edit
+    redirect_to root_path unless current_user
+
     @task = Task.find(params[:id])
   end
 
@@ -36,8 +36,12 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task = Task.find(params[:id])
-    current_user.tasks.delete(@task)
-    redirect_to user_path(current_user)
+    if current_user
+      @task = Task.find(params[:id])
+      current_user.tasks.delete(@task)
+      redirect_to user_path(current_user)
+    else
+      redirect_to root_path
+    end
   end
 end

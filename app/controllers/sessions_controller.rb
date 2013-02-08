@@ -1,6 +1,8 @@
 class SessionsController < ApplicationController
   def new
     @session = User.new
+
+    redirect_to user_path(current_user) if current_user
   end
 
   def create
@@ -17,8 +19,12 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    curren_user.session_token = nil
-    cookies[:user_id] = nil
-    cookies[:token] = nil
+    if current_user
+      current_user.session_token = nil
+      cookies[:user_id] = nil
+      cookies[:token] = nil
+    end
+
+    redirect_to root_path
   end
 end

@@ -1,8 +1,4 @@
 class UsersController < ApplicationController
-  def index
-
-  end
-
   def new
     @user = User.new
   end
@@ -20,6 +16,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @tasks = @user.tasks
 
     unless @user==current_user
       redirect_to login_path

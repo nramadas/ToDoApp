@@ -14,12 +14,17 @@ class User < ActiveRecord::Base
                           with: /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i,
                           message: "is invalid"
 
-  validates_length_of     :password, minimum: 8,
+  validates_length_of     :password, minimum: 8, on: :create,
                           message: "must be atleast 8 characters long"
 
-  validates_presence_of   :password_confirmation, message: "cannot be blank"
+  validates_presence_of   :password_confirmation, if: :check_password_confirmation?,
+                          message: "cannot be blank"
 
   has_many :tasks
   has_many :tags, through: :tasks
+
+  def check_password_confirmation?
+    password
+  end
 
 end

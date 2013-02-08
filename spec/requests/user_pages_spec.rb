@@ -63,7 +63,7 @@ describe "UserPages" do
     it "should add tasks" do
       add_task(1)
       page.should have_content("Task #1")
-      page.should have_content("Completed")
+      page.should have_content("i got this")
     end
 
     it "allows you to edit tasks" do
@@ -74,7 +74,7 @@ describe "UserPages" do
 
     it "allows you to complete tasks" do
       add_task(1)
-      click_link "Completed"
+      click_link "i got this"
       page.should_not have_content("Task #1")
     end
   end

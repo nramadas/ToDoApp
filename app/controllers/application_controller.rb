@@ -5,20 +5,15 @@ class ApplicationController < ActionController::Base
 
   def build_cookie(user)
     cookies[:user_id] = user.id
-    user.session_token = SecureRandom.uuid
+    user.update_attributes(session_token: SecureRandom.uuid)
     cookies[:token] = user.session_token
   end
 
   def current_user
-    if cookies[:user_id] && cookies[:token] && cookies[:user_id] != '' 
-      user = User.find(cookies[:user_id])
-      if user.session_token && user.session_token == cookies[:token]
-        user
-      else
-        nil
-      end
-    else
-      nil
-    end
+    return nil if cookies[:user_id].nil? || cookies[:user_id] == ''
+    return nil if cookies[:token].nil? || cookies[:token] == ''
+    user = User.find(cookies[:user_id])
+    return user if user.session_token == cookies[:token]
+    return nil
   end
 end

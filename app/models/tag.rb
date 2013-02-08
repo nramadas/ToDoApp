@@ -5,8 +5,8 @@ class Tag < ActiveRecord::Base
   validates_uniqueness_of :tag_name, case_sensitive: false,
                            message: "already exists"
 
-  has_many :tag_tasks, dependent: :destroy
-  has_many :tasks, through: :tag_tasks
+  has_many :tag_tasks
+  has_many :tasks, through: :tag_tasks, dependent: :destroy
 
   has_many :users, through: :tasks
 

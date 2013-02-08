@@ -1,33 +1,58 @@
-<h1 class="user_show"><%= @user.name %></h1>
-<% @user.tags.each do |tag| %>
-  <%= link_to tag_path(tag) do %>
-    <div class="tag">
-      <%= tag.tag_name %>
+<div class="task_list">
+  <h1 class="task_list_title">Things you want to get done:</h1>
+
+  <%= link_to new_task_path do %>
+    <div class="user_show_add_task_link">
+      Add a task
     </div>
   <% end %>
-<% end %>
-<div class="clear_floats"></div>
-<%= link_to new_task_path do %>
-  <div class="add_task">
-    Add a task
-  </div>
-<% end %>
-<h2 class="user_show">Things you want to get done:</h2>
-<% if @user.tasks.any? %>
-  <% @user.tasks.each do |task| %>
+
+  <% if @user %>
+    <div class="pre_tag">Tags:</div> 
+    <% @user.tags.uniq.each do |tag| %>
+      <%= link_to tag_path(tag) do %>
+        <div class="tag">
+          <%= tag.tag_name %>
+        </div>
+      <% end %>
+    <% end %>
+  <% else %>
+    <div class="pre_tag">Back to:</div>
+    <%= link_to user_path(current_user) do %>
+      <div class="tag">
+        All tasks
+      </div>
+    <% end %>
+  <% end %>
+  <div class="clear_floats"></div>
+
+  <div class="divider">&bull; &bull; &bull;</div>
+
+  <% if @tasks.any? %>
+    <% @tasks.each do |task| %>
+      <div class="user_show_task">
+        <h1><%= task.title %></h1>
+
+        <%= link_to edit_task_path(task) do %>
+          <div class="user_show_task_link_left">edit</div>
+        <% end %>
+
+        <div class="clear_floats"></div>
+
+        <p><%= task.body %></p>
+
+        <%= link_to task_path(task), method: :delete do %>
+          <div class="user_show_task_link_right">i got this done!</div>
+        <% end %>
+
+        <div class="clear_floats"></div>
+      </div>
+
+      <div class="divider">&bull; &bull; &bull;</div>
+    <% end %>
+  <% else %>
     <div class="user_show_task">
-      <h1><%= task.title %></h1>
-      <%= link_to edit_task_path(task) do %>
-        <div class="user_show_edit_task">edit</div>
-      <% end %>
-      <p><%= task.body %></p>
-      <%= link_to task_path(task), method: :delete do %>
-        <div class="user_show_delete_task">Completed!</div>
-      <% end %>
+      No upcoming tasks
     </div>
   <% end %>
-<% else %>
-  <div class="user_show_task">
-    No upcoming tasks
-  </div>
-<% end %>
+</div>
