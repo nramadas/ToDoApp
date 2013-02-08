@@ -89,6 +89,20 @@ body {
   }
 }
 
+.flash {
+  font-family: "Text Me One", sans-serif;
+  font-size: 20px;
+  position: fixed;
+  top: 540px;
+  left: 60px;
+  border-radius: 20px;
+  border: 2px solid red;
+  color: white;
+  padding: 20px;
+  width: 220px;
+  text-align: center;
+}
+
 .profile_pic_stub {
   position:fixed;
   font-family: "Text Me One", sans-serif;

@@ -12,8 +12,8 @@ class SessionsController < ApplicationController
       build_cookie(@user)
       redirect_to user_path(@user)
     else
-      flash.now[:notice] = "Invalid Username/Password"
-      @session = @user
+      flash.now[:notice] = "Invalid Username / Password"
+      @session = User.new(params[:user])
       render 'new'
     end
   end
