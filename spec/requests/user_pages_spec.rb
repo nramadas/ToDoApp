@@ -45,10 +45,10 @@ describe "UserPages" do
 
     it "doesn't sign the same user twice" do
       create_user(1)
+      create_user(1)
 
-      expect do
-        create_user(1)
-      end.to raise_error
+      User.all.length.should eq(1)
+      page.should have_content("Sign")
     end
   end
 

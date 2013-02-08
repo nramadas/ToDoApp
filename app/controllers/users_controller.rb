@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     @user.completed_task_count = 0
 
-    if @user.save!
+    if @user.save
       build_cookie(@user)
       redirect_to user_path(@user)
     else

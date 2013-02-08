@@ -9,7 +9,7 @@ class TasksController < ApplicationController
     @task = current_user.tasks.new(params[:task])
     @task.tags << Tag.make_tag(params[:tag]) unless params[:tag].empty?
 
-    if @task.save!
+    if @task.save
       redirect_to user_path(current_user)
     else
       flash.now[:notice] = @task.errors.full_messages.first
