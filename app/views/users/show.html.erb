@@ -31,7 +31,11 @@
   <% if @tasks.any? %>
     <% @tasks.each do |task| %>
       <div class="user_show_task">
-        <h1><%= task.title %></h1>
+        <% if task.title.empty? %>
+          <h1>Do this</h1>
+        <% else %>
+          <h1><%= task.title %></h1>
+        <% end %>
 
         <%= link_to edit_task_path(task) do %>
           <div class="user_show_task_link_left">edit</div>

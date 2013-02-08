@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
     return nil if cookies[:user_id].nil? || cookies[:user_id] == ''
     return nil if cookies[:token].nil? || cookies[:token] == ''
     user = User.find(cookies[:user_id])
+    return nil unless user
     return user if user.session_token == cookies[:token]
     return nil
   end

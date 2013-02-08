@@ -5,8 +5,10 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    @user.completed_task_count = 0
 
-    if @user.save
+    if @user.save!
+      build_cookie(@user)
       redirect_to user_path(@user)
     else
       flash.now[:notice] = @user.errors.full_messages.first

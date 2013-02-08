@@ -6,7 +6,7 @@ class Tag < ActiveRecord::Base
                            message: "already exists"
 
   has_many :tag_tasks
-  has_many :tasks, through: :tag_tasks, dependent: :destroy
+  has_many :tasks, through: :tag_tasks
 
   has_many :users, through: :tasks
 

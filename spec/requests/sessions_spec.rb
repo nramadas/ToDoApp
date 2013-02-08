@@ -14,8 +14,13 @@ describe "Sessions" do
     click_button 'Sign'
   end
 
+  def log_out
+    click_link 'Logout'
+  end
+
   before do
     create_user(1)
+    log_out
   end
 
   describe "login possible:" do
@@ -39,6 +44,7 @@ describe "Sessions" do
 
     it "does not let you visit other user pages without proper authentication" do
       create_user(2)
+      log_out
       visit login_path
       fill_form(1)
       visit user_path(User.last)

@@ -29,7 +29,6 @@ describe "TaskPages" do
 
   before do
     create_user(1)
-    log_in_user(1)
   end
 
   subject { page }
@@ -37,8 +36,8 @@ describe "TaskPages" do
   describe "can add tags" do
     before do
       click_link 'Add'
-      fill_in 'What do you', with: "Task #1"
-      fill_in 'Any specifics?', with: "Specifics 1"
+      fill_in 'Title', with: "Task #1"
+      fill_in 'What do you want', with: "Specifics 1"
       fill_in 'tag', with: "Tag 1"
       click_button 'Create'
     end

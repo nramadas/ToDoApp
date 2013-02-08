@@ -5,8 +5,8 @@ describe "Tasks" do
   
   subject { @task }
 
-  describe "must have a title" do
-    before { @task.title = nil }
+  describe "must have a body" do
+    before { @task.body = nil }
 
     it { should_not be_valid }
   end

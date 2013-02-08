@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   has_secure_password
 
-  attr_accessible :email, :name, :password, :password_confirmation, :session_token
+  attr_accessible :email, :name, :password, :password_confirmation,
+                  :session_token, :completed_task_count
 
   validates_presence_of   :name, message: "cannot be blank"
   validates_length_of     :name, in: 1..30,
@@ -17,11 +18,12 @@ class User < ActiveRecord::Base
   validates_length_of     :password, minimum: 8, on: :create,
                           message: "must be atleast 8 characters long"
 
-  validates_presence_of   :password_confirmation, if: :check_password_confirmation?,
+  validates_presence_of   :password_confirmation,
+                          if: :check_password_confirmation?,
                           message: "cannot be blank"
 
-  has_many :tasks
-  has_many :tags, through: :tasks
+  has_many :tasks, dependent: :destroy
+  has_many :tags, through: :tasks, dependent: :destroy
 
   def check_password_confirmation?
     password

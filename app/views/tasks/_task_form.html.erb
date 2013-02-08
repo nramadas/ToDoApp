@@ -1,10 +1,10 @@
 <%= form_for(@task) do |f| %>
   <p>
-    <%= f.label :title, "What do you want to do?" %>
+    <%= f.label :title, "Title (optional)" %>
     <%= f.text_field :title %>
   </p>
   <p>
-    <%= f.label :body, "Any specifics?" %>
+    <%= f.label :body, "What do you want to do?" %>
     <%= f.text_area :body %>
   </p>
   <p>

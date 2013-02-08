@@ -22,8 +22,8 @@ describe "UserPages" do
 
   def add_task(num)
     click_link 'Add'
-    fill_in 'What do you', with: "Task ##{num}"
-    fill_in 'Any specifics?', with: "Specifics #{num}"
+    fill_in 'Title', with: "Task ##{num}"
+    fill_in 'What do you want', with: "Specifics #{num}"
     click_button 'Create'
   end
 
@@ -45,15 +45,15 @@ describe "UserPages" do
 
     it "doesn't sign the same user twice" do
       create_user(1)
-      create_user(1)
 
-      User.all.length.should eq(1)
-      page.should have_content("Sign")
+      expect do
+        create_user(1)
+      end.to raise_error
     end
   end
 
   describe "show page:" do
-    before { create_user(1); log_in_user(1) }
+    before { create_user(1) }
 
     subject { page }
 
