@@ -9,5 +9,6 @@ A to-do applications, with tagging support
 - View Partials
 - View Helpers
 - Associations
+- Simple responsive design
 
 Preview can be found here: http://aqueous-ravine-2968.herokuapp.com/
