@@ -22,6 +22,8 @@ $inputBorder:    #ccc;
 $linkColor:      #08c;
 $linkColorHover: darken($linkColor, 15%);
 
+$medium:         950px;
+
 @font-face {
   font-family: "Antic Slab";
   src: font-path("AnticSlab-Regular.ttf");
@@ -80,6 +82,12 @@ body {
   width: 220px;
   text-align: center;
 
+  @media (max-width: $medium) {
+    width: 440px;
+    height: 110px;
+    position: absolute;
+  }
+
   a {
    @include transitionals;
   }
@@ -89,18 +97,28 @@ body {
   }
 }
 
-.flash {
-  font-family: "Text Me One", sans-serif;
-  font-size: 20px;
-  position: fixed;
-  top: 540px;
-  left: 60px;
-  border-radius: 20px;
-  border: 2px solid red;
-  color: white;
-  padding: 20px;
-  width: 220px;
-  text-align: center;
+.logout1 {
+  @media (max-width: $medium) {
+    display: none;
+  }
+}
+
+.logout2 {
+  display: none;
+  position: absolute;
+  left: 270px;
+  top: 100px;
+
+  @media (max-width: $medium) {
+    display: block;
+  }
+}
+
+.profile_pic {
+  @media (max-width: $medium) {
+    width: 110px;
+    float: left;
+  }
 }
 
 .profile_pic_stub {
@@ -120,10 +138,28 @@ body {
 
   z-index: 1;
 
+  @media (max-width: $medium) {
+    display: none;
+  }
+
   &:hover {
     background: rgba(0,0,0,0.5);
     color: white;
   }
+}
+
+.flash {
+  font-family: "Text Me One", sans-serif;
+  font-size: 20px;
+  position: fixed;
+  top: 540px;
+  left: 60px;
+  border-radius: 20px;
+  border: 2px solid red;
+  color: white;
+  padding: 20px;
+  width: 220px;
+  text-align: center;
 }
 
 .form {
@@ -141,6 +177,13 @@ body {
 
   h1 {
     font-family: "Text Me One", sans-serif;
+  }
+
+  @media (max-width: $medium) {
+    clear:both;
+    position: absolute;
+    top: 410px;
+    left: 100px;
   }
 }
 
@@ -172,6 +215,13 @@ body {
 
   p {
     line-height: 40px;
+  }
+
+  @media (max-width: $medium) {
+    position: absolute;
+    top: 240px;
+    left: 50px;
+    margin: 0;
   }
 }
 
@@ -295,6 +345,10 @@ body {
 .count, .pre_count {
   margin-top:5px;
   margin-bottom:10px;
+
+  @media (max-width: $medium) {
+    display: none;
+  }
 }
 
 .count {

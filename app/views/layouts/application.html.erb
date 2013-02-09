@@ -39,8 +39,12 @@
         Tasks remaining:
       </div>
       <div class="clear_floats"></div>
-
-      <%= link_to 'Logout', session_path(current_user), method: :delete %>
+      <span class="logout1">
+        <%= link_to 'Logout', session_path(current_user), method: :delete %>
+      </span>
+      <span class="logout2">
+        <%= link_to 'Logout', session_path(current_user), method: :delete %>
+      </span>
     </div>
   <% end %>
 
