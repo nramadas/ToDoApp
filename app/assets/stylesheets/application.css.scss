@@ -85,6 +85,7 @@ body {
   @media only screen and (max-width: $medium) {
     width: 440px;
     height: 110px;
+    left: 20px;
     position: absolute;
   }
 
@@ -182,8 +183,8 @@ body {
   @media only screen and (max-width: $medium) {
     clear:both;
     position: absolute;
-    top: 410px;
-    left: 100px;
+    top: 310px;
+    left: 10px;
   }
 }
 
@@ -220,8 +221,18 @@ body {
   @media only screen and (max-width: $medium) {
     position: absolute;
     top: 240px;
-    left: 50px;
+    left: 10px;
     margin: 0;
+  }
+}
+
+.form_description {
+  @media only screen and (max-width: $medium) {
+    position: absolute;
+    clear: both;
+    margin: 0;
+    top: 20px;
+    left: 20px;
   }
 }
 
