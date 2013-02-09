@@ -231,6 +231,7 @@ body {
     position: absolute;
     clear: both;
     margin: 0;
+    margin-bottom: 100px;
     top: 20px;
     left: 20px;
   }
@@ -375,4 +376,8 @@ body {
   border: none;
   color: black;
   float:right;
+}
+
+.footer {
+  height: 100px;
 }
